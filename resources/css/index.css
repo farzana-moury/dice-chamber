@@ -1,0 +1,53 @@
+html {
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.main-menu {
+    color: red;
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-menu h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 7vh;
+    animation: 2s 1 forwards fadeInAnimation;
+}
+
+.main-menu img {
+    width: 22vh;
+    animation: 3s 1 forwards fadeInAnimation;
+}
+
+.main-menu h2 {
+    animation: 10s 1 forwards fadeAnimation;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        margin-bottom: 250%;
+    }
+    to {
+        opacity: 1;
+        margin-bottom: 0%;
+    }
+}
+
+@keyframes fadeAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
