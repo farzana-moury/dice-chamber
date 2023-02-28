@@ -1,14 +1,13 @@
 // important variables and constants
-let oddDiceNumber, commonDiceNumber, totalRows, randomPosition;
+let oddDiceNumber, commonDiceNumber, totalRows = 1, randomPosition;
 let diceArray = [], totalDice, totalCommonDice;
-let winRound, winLevel;
+let winRound = 0, winLevel;
 const totalColumns = 6;
 
 // html elements
 let gameScreen = document.getElementById('game-screen');
 
 function levelOne(){
-    totalRows = 1;
     diceArray.length = totalColumns * totalRows;
 
     // set odd dice and common dice numbers
@@ -35,15 +34,27 @@ function levelOne(){
         if(dice === oddDiceNumber){
             let oddDice = document.createElement('img');
             oddDice.src = `../images/dice-${oddDiceNumber}.png`;
+            oddDice.className = 'odd-dice';
             gameScreen.appendChild(oddDice);
         } else {
             let commonDice = document.createElement('img');
             commonDice.src = `../images/dice-${commonDiceNumber}.png`;
+            commonDice.className = 'common-dice';
             gameScreen.appendChild(commonDice);
         }
     }
 
-    console.log(diceArray);
+    // if the user clicks a common dice, the game does not progress
+    document.querySelectorAll('.common-dice').forEach(dice => {
+        dice.addEventListener('click', () => {
+            console.log('Uh oh');
+        });
+    })
+    
+    // if the user clicks on an odd dice, the game progresses
+    document.querySelector('.odd-dice').addEventListener('click', () => {
+            console.log('success!');
+    });
 }
 
 levelOne();
