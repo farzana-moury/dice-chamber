@@ -1,5 +1,14 @@
 html {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;;
+}
+
+body {
     background-color: black;
+}
+
+#instructions {
+    color: red;
 }
 
 #game-screen {
@@ -8,6 +17,7 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
+    width: 530px;
 }
 
 #game-screen img {

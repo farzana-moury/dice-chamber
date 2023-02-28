@@ -1,7 +1,7 @@
 // important variables and constants
 let oddDiceNumber, commonDiceNumber, totalRows = 1, randomPosition;
 let diceArray = [], totalDice, totalCommonDice;
-let winRound = 0, winLevel;
+let winRound = 1, winLevel;
 const totalColumns = 6;
 
 // html elements
@@ -47,13 +47,18 @@ function levelOne(){
     // if the user clicks a common dice, the game does not progress
     document.querySelectorAll('.common-dice').forEach(dice => {
         dice.addEventListener('click', () => {
-            console.log('Uh oh');
+            document.body.style.backgroundColor = 'red';
         });
     })
     
-    // if the user clicks on an odd dice, the game progresses
+    // if the user clicks on an odd dice, the game progresses to the next round
     document.querySelector('.odd-dice').addEventListener('click', () => {
-            console.log('success!');
+            // console.log('success!');
+            gameScreen.innerHTML = '';
+            winRound++;
+            totalRows *= 2;
+            diceArray = [];
+            levelOne();
     });
 }
 
