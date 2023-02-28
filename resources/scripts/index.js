@@ -1,6 +1,7 @@
 // important variables and constants
 let oddDiceNumber, commonDiceNumber, totalRows, randomPosition;
 let gameScreen = [], totalDice, totalCommonDice;
+let winRound, winLevel;
 const totalColumns = 6;
 
 function levelOne(){
@@ -26,7 +27,7 @@ function levelOne(){
     randomPosition = Math.floor(Math.random() * 5);
     gameScreen[randomPosition] = oddDiceNumber;
 
-    console.log(gameScreen);
+    // console.log(gameScreen);
 }
 
 levelOne();
