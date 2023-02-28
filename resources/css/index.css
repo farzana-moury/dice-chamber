@@ -1,5 +1,6 @@
 html {
     font-family: 'Orbitron', sans-serif;
+    background-color: black;
 }
 
 body {
@@ -8,7 +9,6 @@ body {
 
 .main-menu {
     color: red;
-    background-color: black;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,11 @@ body {
 
 .main-menu h2 {
     animation: 10s 1 forwards fadeAnimation;
+}
+
+.main-menu a:link,  .main-menu a:visited{
+    text-decoration: none;
+    color: red;
 }
 
 @keyframes fadeInAnimation {
