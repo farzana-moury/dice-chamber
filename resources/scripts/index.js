@@ -44,6 +44,10 @@ function levelOne(){
 
     if(winRound === 5){
         winLevel = true;
+    }
+
+    if(winLevel === true){
+        gameScreen.innerHTML = '';
         window.location.href = "../levels/levelTwo.html";
     }
 
