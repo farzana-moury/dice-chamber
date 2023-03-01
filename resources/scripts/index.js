@@ -15,10 +15,8 @@ function levelOne(){
     commonDiceNumber = Math.floor(Math.random() * 6) + 1;
 
     // check to ensure the two dice numbers are always different 
-    if (commonDiceNumber === oddDiceNumber){
+    while(oddDiceNumber === commonDiceNumber){
         commonDiceNumber = Math.floor(Math.random() * 6) + 1;
-    } else{
-        commonDiceNumber = commonDiceNumber;
     }
 
     // place down all the common dice first
@@ -42,6 +40,11 @@ function levelOne(){
             commonDice.className = 'common-dice';
             gameScreen.appendChild(commonDice);
         }
+    }
+
+    if(winRound === 5){
+        winLevel = true;
+        window.location.href = "../levels/levelTwo.html";
     }
 
     // if the user clicks a common dice, the game does not progress
