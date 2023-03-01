@@ -42,10 +42,10 @@ function levelOne(){
         }
     }
 
+    // moving on to the next level
     if(winRound === 5){
         winLevel = true;
     }
-
     if(winLevel === true){
         gameScreen.innerHTML = '';
         window.location.href = "../levels/levelTwo.html";
