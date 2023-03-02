@@ -1,7 +1,8 @@
 // important variables 
-let numberOfDice, number1, number2, answer, expression;
-let operators = ["+", "-", "×", "÷",], randomIndex;
-let operands = [];
+let numberOfDice, number1, number2, answer, expression = 0;
+let allOperators = ["+", "-", "×", "÷",], randomIndex;
+let expressionArray = [];
+let operands = [], operators = [], bedmas = [];;
 let option1Answer = 0, option2Answer = 0, option3Answer = 0;
 let winRound = 1, winLevel;
 
@@ -15,16 +16,43 @@ let winRound = 1, winLevel;
 // questionMark.innerText = "?";
 
 function levelTwo(){
-    numberOfDice = 2; //number of dice in each operand
+    numberOfDice = 5; //number of dice in each operand
     
-    for (let i=0; i<numberOfDice; i++){
+    for (let i = 0; i < numberOfDice; i++){
         let randomNum = Math.floor(Math.random() * 6) + 1;
-        let randomOperand = Math.floor(Math.random() * (operators.length - 1));
-        operands.push(randomNum);
-        operands.push(operators[randomOperand]);
+        let randomOperator = Math.floor(Math.random() * (allOperators.length));
+        expressionArray.push(randomNum);
+        expressionArray.push(allOperators[randomOperator]);
     }
-    operands.pop();
-    console.log(operands);
+    // console.log(expressionArray);
+
+    for (let i = 0, j = 1; i <= expressionArray.length,j <= expressionArray.length; i += 2,j += 2){
+        operands.push(expressionArray[i]);
+        operators.push(expressionArray[j]);
+    }
+    operators.pop(); // gets rid of the extra operator at the end of the expression
+
+    // console.log(expressionArray);
+    // console.log(operands);
+    // console.log(operators);
+
+    console.log(operators);
+
+    for(let i=0; i<operators.length; i++){
+        if(operators[i] === "×" || operators[i] === "÷"){
+            bedmas.push(operators[i]);
+        }
+    }
+
+    for(let i=0; i<operators.length; i++){
+        if(operators[i] === "+" || operators[i] === "-"){
+            bedmas.push(operators[i]);
+        }
+    }
+
+    console.log(operators);
+    console.log(bedmas);
+    
 
     // set up expression on screen
 
