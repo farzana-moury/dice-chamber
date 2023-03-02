@@ -98,6 +98,9 @@ function levelTwo(){
     document.querySelector('#correct').addEventListener('click', () => {
         gameScreen.innerHTML = '';
         winRound++;
+        option1.id = "option1";
+        option2.id = "option2";
+        option3.id = "option3";
         levelTwo();
     });
 }
