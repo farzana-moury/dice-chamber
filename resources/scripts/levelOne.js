@@ -24,7 +24,7 @@ function levelOne(){
         diceArray[i] = commonDiceNumber;
     }
     // then place the odd dice on a random position
-    randomPosition = Math.floor(Math.random() * 5);
+    randomPosition = Math.floor(Math.random() * (diceArray.length - 1));
     diceArray[randomPosition] = oddDiceNumber;
 
     // set odd dice and common dice images on the screen accordingly
