@@ -94,6 +94,12 @@ function levelTwo(){
         default:
             alert('No random index detected');
     }
+
+    document.querySelector('#correct').addEventListener('click', () => {
+        gameScreen.innerHTML = '';
+        winRound++;
+        levelTwo();
+    });
 }
 
 // creates answers for the other answer choices
