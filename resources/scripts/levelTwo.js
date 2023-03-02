@@ -118,8 +118,6 @@ function generateOtherAnswers(){
         option1Answer = number1;
         option2Answer = number2;
     }
-
-    console.log(option1Answer, option2Answer, option3Answer);
 }
 
 levelTwo();
