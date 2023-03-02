@@ -1,25 +1,30 @@
 html {
     text-align: center;
-    font-family: 'Orbitron', sans-serif;;
+    font-family: 'Orbitron', sans-serif;
+    color: red;
 }
 
 body {
     background-color: black;
 }
 
-#instructions {
-    color: red;
-}
-
 #game-screen {
-    position: fixed;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: auto;
-    width: 530px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25vh 25vh;
 }
 
 #game-screen img {
     margin: 5px 5px;
+}
+
+#answer-choices {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+#answer-choices h1 {
+    margin: 10px 20px;
 }
