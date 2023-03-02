@@ -1,6 +1,6 @@
 // important variables 
 let numberOfDice, number1, number2, answer, expression = 0;
-let allOperators = ["+", "-", "×", "÷",], randomIndex;
+let allOperators = ['+', '-', '×', '÷'], randomIndex;
 let expressionArray = [];
 let operands = [], operators = [], bedmas = [];;
 let option1Answer = 0, option2Answer = 0, option3Answer = 0;
@@ -36,23 +36,45 @@ function levelTwo(){
     // console.log(operands);
     // console.log(operators);
 
-    console.log(operators);
+    // console.log(operators);
 
+    // order of operations: reordering and populating bedmas array
     for(let i=0; i<operators.length; i++){
-        if(operators[i] === "×" || operators[i] === "÷"){
+        if(operators[i] === '×' || operators[i] === '÷'){ // first we extract the multiplication and division operators
             bedmas.push(operators[i]);
         }
     }
 
     for(let i=0; i<operators.length; i++){
-        if(operators[i] === "+" || operators[i] === "-"){
+        if(operators[i] === '+' || operators[i] === '-'){ // and then we extract the addition and subtraction operators
             bedmas.push(operators[i]);
         }
     }
 
     console.log(operators);
+    console.log(operands);
     console.log(bedmas);
+
+    expression = operands[0]; //setting the expression as the first number in the operands array
+
+    // evaluating the expression
+    for(let i=0; i<bedmas.length; i++){
+        if(bedmas[i] === '×'){
+            expression *= operands[i + 1];
+        }
+        else if(bedmas[i] === '÷'){
+            expression /= operands[i + 1];
+        }
+        else if(bedmas[i] === '+'){
+            expression += operands[i + 1];
+        }
+        else if(bedmas[i] === '-'){
+            expression -= operands[i + 1];
+        }
+        Math.floor(expression);
+    }
     
+    console.log(expression);
 
     // set up expression on screen
 
