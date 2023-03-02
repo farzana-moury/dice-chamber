@@ -1,7 +1,7 @@
 // important variables 
 let numberOfDice, number1, number2, answer, expression;
 let operators = ["+", "-", "×", "÷",], randomIndex;
-let option1Answer, option2Answer, option3Answer;
+let option1Answer = 0, option2Answer = 0, option3Answer = 0;
 let winRound = 1, winLevel;
 
 // html elements
@@ -61,7 +61,7 @@ function levelTwo(){
         case 0:
             // set the appropriate answers to each choice
             option1Answer = answer;
-            generateOtherAnswers(answer, option2Answer, option3Answer);
+            generateOtherAnswers();
 
             // set the html elements' text values
             option1.innerText = option1Answer;
@@ -73,7 +73,7 @@ function levelTwo(){
             break;
         case 1:
             option2Answer = answer;
-            generateOtherAnswers(answer, option1Answer, option3Answer);
+            generateOtherAnswers();
 
             option1.innerText = option1Answer;
             option2.innerText = option2Answer;
@@ -82,8 +82,8 @@ function levelTwo(){
             option2.id = 'correct';
             break;
         case 2:
-            option3Answer = answer;
-            generateOtherAnswers(answer, option1Answer, option2Answer);
+            option2Answer = answer;
+            generateOtherAnswers();
 
             option1.innerText = option1Answer;
             option2.innerText = option2Answer;
@@ -97,19 +97,29 @@ function levelTwo(){
 }
 
 // creates answers for the other answer choices
-function generateOtherAnswers(answer, option1, option2){
+function generateOtherAnswers(){
     let number1 = Math.floor(Math.random() * answer);
     let number2 = Math.floor(Math.random() * answer);
 
-    // while either of the randomly generated numbers equal the answer
-    while(number1 === answer || number2 === answer){
+    // ensures every choice of answer is different
+    while(number1 === answer || number2 === answer || number1 === number2){
         // we continue to randomize them
         number1 = Math.floor(Math.random() * answer);
         number2 = Math.floor(Math.random() * answer);
     }
+    
+    if (option1Answer === answer){
+        option2Answer = number1;
+        option3Answer = number2;
+    } else if(option2Answer === answer){
+        option1Answer = number1;
+        option3Answer = number2;
+    } else if(option3Answer === answer){
+        option1Answer = number1;
+        option2Answer = number2;
+    }
 
-    option1 = number1;
-    option2 = number2;
+    console.log(option1Answer, option2Answer, option3Answer);
 }
 
 levelTwo();
