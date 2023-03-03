@@ -111,36 +111,30 @@ function levelTwo() {
     switch(randomIndex){
         case 0:
             option1Answer = evaluation;
-            
-            option2Answer = Math.floor(Math.random() * evaluation) + 1;
-            option3Answer = Math.floor(Math.random() * evaluation) + 1;
-            
-            while(option2Answer === evaluation || option3Answer === evaluation || option2Answer === option3Answer){
-                option2Answer = Math.floor(Math.random() * evaluation) + 1;
-                option3Answer = Math.floor(Math.random() * evaluation) + 1;
-            } 
+
+            randomNum1 = Math.floor(Math.random() * 6) + 1;
+            randomNum2 = Math.floor(Math.random() * 20) + 7;
+
+            option2Answer = Math.floor(Math.random() * (evaluation - randomNum1));
+            option3Answer = Math.floor(Math.random() * (evaluation - randomNum2));
             break;
         case 1:
             option2Answer = evaluation;
 
-            option1Answer = Math.floor(Math.random() * evaluation) + 1;
-            option3Answer = Math.floor(Math.random() * evaluation) + 1;
+            randomNum1 = Math.floor(Math.random() * 6) + 1;
+            randomNum2 = Math.floor(Math.random() * 20) + 7;
             
-            while(option1Answer === evaluation || option3Answer === evaluation || option1Answer === option3Answer){
-                option1Answer = Math.floor(Math.random() * evaluation) + 1;
-                option3Answer = Math.floor(Math.random() * evaluation) + 1;
-            } 
+            option1Answer = Math.floor(Math.random() * (evaluation - randomNum1));
+            option3Answer = Math.floor(Math.random() * (evaluation - randomNum2));
             break;
         case 2:
             option3Answer = evaluation;
 
-            option1Answer = Math.floor(Math.random() * evaluation) + 1;
-            option2Answer = Math.floor(Math.random() * evaluation) + 1;
+            randomNum1 = Math.floor(Math.random() * 6) + 1;
+            randomNum2 = Math.floor(Math.random() * 20) + 7;
             
-            while(option1Answer === evaluation || option2Answer === evaluation || option1Answer === option2Answer){
-                option1Answer = Math.floor(Math.random() * evaluation) + 1;
-                option2Answer = Math.floor(Math.random() * evaluation) + 1;
-            } 
+            option1Answer = Math.floor(Math.random() * (evaluation - randomNum1));
+            option2Answer = Math.floor(Math.random() * (evaluation - randomNum2));
             break;
         default:
             alert('Could not identify random index');
