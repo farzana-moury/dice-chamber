@@ -111,30 +111,36 @@ function levelTwo() {
     switch(randomIndex){
         case 0:
             option1Answer = evaluation;
-            for(let i = 0; i < 2; i++){
-                let randomNum = Math.floor(Math.random() * evaluation);
-                let randomBound = Math.floor(Math.random() * 6) + 1;
-                option2Answer = Math.floor(Math.random() * (evaluation + randomNum)) + randomBound;
-                option3Answer = Math.floor(Math.random() * (evaluation - randomNum));   
-            }         
+            
+            option2Answer = Math.floor(Math.random() * evaluation) + 1;
+            option3Answer = Math.floor(Math.random() * evaluation) + 1;
+            
+            while(option2Answer === evaluation || option3Answer === evaluation || option2Answer === option3Answer){
+                option2Answer = Math.floor(Math.random() * evaluation) + 1;
+                option3Answer = Math.floor(Math.random() * evaluation) + 1;
+            } 
             break;
         case 1:
             option2Answer = evaluation;
-            for(let i = 0; i < 2; i++){
-                let randomNum = Math.floor(Math.random() * evaluation);
-                let randomBound = Math.floor(Math.random() * 6) + 1;
-                option1Answer = Math.floor(Math.random() * (evaluation + randomNum)) + randomBound;
-                option3Answer = Math.floor(Math.random() * (evaluation - randomNum));   
-            }  
+
+            option1Answer = Math.floor(Math.random() * evaluation) + 1;
+            option3Answer = Math.floor(Math.random() * evaluation) + 1;
+            
+            while(option1Answer === evaluation || option3Answer === evaluation || option1Answer === option3Answer){
+                option1Answer = Math.floor(Math.random() * evaluation) + 1;
+                option3Answer = Math.floor(Math.random() * evaluation) + 1;
+            } 
             break;
         case 2:
             option3Answer = evaluation;
-            for(let i = 0; i < 2; i++){
-                let randomNum = Math.floor(Math.random() * evaluation);
-                let randomBound = Math.floor(Math.random() * 6) + 1;
-                option1Answer = Math.floor(Math.random() * (evaluation + randomNum)) + randomBound;
-                option2Answer = Math.floor(Math.random() * (evaluation - randomNum));   
-            }  
+
+            option1Answer = Math.floor(Math.random() * evaluation) + 1;
+            option2Answer = Math.floor(Math.random() * evaluation) + 1;
+            
+            while(option1Answer === evaluation || option2Answer === evaluation || option1Answer === option2Answer){
+                option1Answer = Math.floor(Math.random() * evaluation) + 1;
+                option2Answer = Math.floor(Math.random() * evaluation) + 1;
+            } 
             break;
         default:
             alert('Could not identify random index');
