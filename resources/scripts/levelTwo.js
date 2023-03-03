@@ -1,8 +1,8 @@
 // important variables 
-let numberOfDice, number1, number2, answer, expression = 0;
+let numberOfOperands, number1, number2, answer, evaluation = 0;
 let allOperators = ['+', '-', '×', '÷'], randomIndex;
 let expressionArray = [];
-let operands = [], operators = [], bedmas = [];;
+let operands = [], operators = [], bedmas = [];
 let option1Answer = 0, option2Answer = 0, option3Answer = 0;
 let winRound = 1, winLevel;
 
@@ -16,65 +16,75 @@ let winRound = 1, winLevel;
 // questionMark.innerText = "?";
 
 function levelTwo(){
-    numberOfDice = 5; //number of dice in each operand
+    numberOfOperands = 5;
     
-    for (let i = 0; i < numberOfDice; i++){
+    // creating a random expression
+    for (let i = 0; i < numberOfOperands; i++){
         let randomNum = Math.floor(Math.random() * 6) + 1;
         let randomOperator = Math.floor(Math.random() * (allOperators.length));
         expressionArray.push(randomNum);
         expressionArray.push(allOperators[randomOperator]);
     }
-    // console.log(expressionArray);
 
-    for (let i = 0, j = 1; i <= expressionArray.length,j <= expressionArray.length; i += 2,j += 2){
-        operands.push(expressionArray[i]);
-        operators.push(expressionArray[j]);
+    // grabbing all the operators within the expression
+    for (let i = 1; i <= expressionArray.length; i += 2){
+        operators.push(expressionArray[i]);
     }
     operators.pop(); // gets rid of the extra operator at the end of the expression
 
-    // console.log(expressionArray);
-    // console.log(operands);
-    // console.log(operators);
-
-    // console.log(operators);
-
-    // order of operations: reordering and populating bedmas array
-    for(let i=0; i<operators.length; i++){
+    // reordering the operators according to BEDMAS
+    for (let i = 0; i < operators.length; i++){
         if(operators[i] === '×' || operators[i] === '÷'){ // first we extract the multiplication and division operators
             bedmas.push(operators[i]);
         }
     }
-
-    for(let i=0; i<operators.length; i++){
+    for(let i = 0; i < operators.length; i++){
         if(operators[i] === '+' || operators[i] === '-'){ // and then we extract the addition and subtraction operators
             bedmas.push(operators[i]);
         }
     }
 
+    // grabbing all the operands in the expression and reordering them according to BEDMAS
+    for(let i=0; i < expressionArray.length; i+=2){
+        if(i==0){
+            operands.push(expressionArray[i]);
+        }
+        else if(i >= 2 && expressionArray[i - 1] === '×' || i >= 2 && expressionArray[i - 1] === '÷'){
+            operands.push(expressionArray[i]);
+        }
+    }
+    for(let i=0; i < expressionArray.length; i+=2){
+        if(i >= 2 && expressionArray[i - 1] === '+' || i >= 2 && expressionArray[i - 1] === '-'){
+            operands.push(expressionArray[i]);
+        }
+    }
+
+    //we set the evaluation to the first operand since this is our starting point in the calculation
+    evaluation = operands[0];
+    console.log(operands[0]);
+
+    // calculating with BEDMAS to determine the final evaluation
+    for(let i = 0; i < bedmas.length; i++){
+        if(bedmas[i] === '×'){
+            evaluation *= operands[i + 1];
+        }
+        else if(bedmas[i] === '÷'){
+            evaluation /= operands[i + 1];
+        }
+        else if(bedmas[i] === '+'){
+            evaluation += operands[i + 1];
+        }
+        else if(bedmas[i] === '-'){
+            evaluation -= operands[i + 1];
+        }
+        evaluation = Math.round(evaluation);
+    }
+    
+    console.log(expressionArray);
     console.log(operators);
     console.log(operands);
     console.log(bedmas);
-
-    expression = operands[0]; //setting the expression as the first number in the operands array
-
-    // evaluating the expression
-    for(let i=0; i<bedmas.length; i++){
-        if(bedmas[i] === '×'){
-            expression *= operands[i + 1];
-        }
-        else if(bedmas[i] === '÷'){
-            expression /= operands[i + 1];
-        }
-        else if(bedmas[i] === '+'){
-            expression += operands[i + 1];
-        }
-        else if(bedmas[i] === '-'){
-            expression -= operands[i + 1];
-        }
-        Math.floor(expression);
-    }
-    
-    console.log(expression);
+    console.log(evaluation);
 
     // set up expression on screen
 
