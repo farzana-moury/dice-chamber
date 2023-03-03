@@ -110,74 +110,98 @@ function levelTwo() {
 
     switch(randomIndex){
         case 0:
-            // set the appropriate answers to each choice
             option1Answer = evaluation;
-            generateOtherAnswers();
-
-            // set the html elements' text values
-            option1.innerText = option1Answer;
-            option2.innerText = option2Answer;
-            option3.innerText = option3Answer;
-
-            // set the id of the correct html element
-            option1.id = 'correct';
+            option2Answer = Math.floor(Math.random() * evaluation - 1);
+            option3Answer = Math.floor(Math.random() * evaluation - 2);
             break;
         case 1:
             option2Answer = evaluation;
-            generateOtherAnswers();
-
-            option1.innerText = option1Answer;
-            option2.innerText = option2Answer;
-            option3.innerText = option3Answer;
-
-            option2.id = 'correct';
+            option1Answer = Math.floor(Math.random() * evaluation - 1);
+            option3Answer = Math.floor(Math.random() * evaluation - 2);
             break;
         case 2:
-            option2Answer = evaluation;
-            generateOtherAnswers();
-
-            option1.innerText = option1Answer;
-            option2.innerText = option2Answer;
-            option3.innerText = option3Answer;
-
-            option3.id = 'correct';
+            option3Answer = evaluation;
+            option1Answer = Math.floor(Math.random() * evaluation - 1);
+            option2Answer = Math.floor(Math.random() * evaluation - 2);
             break;
         default:
-            alert('No random index detected');
+            alert('Could not identify random index');
     }
 
-    document.querySelector('#correct').addEventListener('click', () => {
-        gameScreen.innerHTML = '';
-        winRound++;
-        option1.id = "option1";
-        option2.id = "option2";
-        option3.id = "option3";
-        levelTwo();
-    });
+    option1.innerText = option1Answer;
+    option2.innerText = option2Answer;
+    option3.innerText = option3Answer;
+
+    // switch(randomIndex){
+    //     case 0:
+    //         // set the appropriate answers to each choice
+    //         option1Answer = evaluation;
+    //         generateOtherAnswers();
+
+    //         // set the html elements' text values
+    //         option1.innerText = option1Answer;
+    //         option2.innerText = option2Answer;
+    //         option3.innerText = option3Answer;
+
+    //         // set the id of the correct html element
+    //         option1.id = 'correct';
+    //         break;
+    //     case 1:
+    //         option2Answer = evaluation;
+    //         generateOtherAnswers();
+
+    //         option1.innerText = option1Answer;
+    //         option2.innerText = option2Answer;
+    //         option3.innerText = option3Answer;
+
+    //         option2.id = 'correct';
+    //         break;
+    //     case 2:
+    //         option2Answer = evaluation;
+    //         generateOtherAnswers();
+
+    //         option1.innerText = option1Answer;
+    //         option2.innerText = option2Answer;
+    //         option3.innerText = option3Answer;
+
+    //         option3.id = 'correct';
+    //         break;
+    //     default:
+    //         alert('No random index detected');
+    // }
+
+    // document.querySelector('#correct').addEventListener('click', () => {
+    //     gameScreen.innerHTML = '';
+    //     winRound++;
+    //     option1.id = "option1";
+    //     option2.id = "option2";
+    //     option3.id = "option3";
+    //     levelTwo();
+    // });
 }
 
 // creates answers for the other answer choices
-function generateOtherAnswers(){
-    let number1 = Math.floor(Math.random() * evaluation);
-    let number2 = Math.floor(Math.random() * evaluation);
+// function generateOtherAnswers(){
+//     let number1 = Math.floor(Math.random() * evaluation);
+//     let number2 = Math.floor(Math.random() * evaluation);
 
-    // ensures every choice of answer is different
-    while(number1 === evaluation || number2 === evaluation || number1 === number2){
-        // we continue to randomize them
-        number1 = Math.floor(Math.random() * evaluation);
-        number2 = Math.floor(Math.random() * evaluation);
-    }
+//     // ensures every choice of answer is different
+//     while(number1 === evaluation || number2 === evaluation || number1 === number2){
+//         // we continue to randomize them
+//         number1 = Math.floor(Math.random() * evaluation);
+//         number2 = Math.floor(Math.random() * evaluation);
+//     }
 
-    if (option1Answer === evaluation){
-        option2Answer = number1;
-        option3Answer = number2;
-    } else if(option2Answer === evaluation){
-        option1Answer = number1;
-        option3Answer = number2;
-    } else if(option3Answer === evaluation){
-        option1Answer = number1;
-        option2Answer = number2;
-    }
-}
+//     if (option1Answer === evaluation){
+//         option2Answer = number1;
+//         option3Answer = number2;
+//     } else if(option2Answer === evaluation){
+//         option1Answer = number1;
+//         option3Answer = number2;
+//     } else if(option3Answer === evaluation){
+//         option1Answer = number1;
+//         option2Answer = number2;
+//     }
+// }
 
 levelTwo();
