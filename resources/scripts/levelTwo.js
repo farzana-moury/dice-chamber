@@ -111,18 +111,18 @@ function levelTwo() {
     switch(randomIndex){
         case 0:
             option1Answer = evaluation;
-            option2Answer = Math.floor(Math.random() * evaluation - 1);
-            option3Answer = Math.floor(Math.random() * evaluation - 2);
+            option2Answer = Math.floor(Math.random() * (evaluation - 1));
+            option3Answer = Math.floor(Math.random() * (evaluation - 2));            
             break;
         case 1:
             option2Answer = evaluation;
-            option1Answer = Math.floor(Math.random() * evaluation - 1);
-            option3Answer = Math.floor(Math.random() * evaluation - 2);
+            option1Answer = Math.floor(Math.random() * (evaluation - 1));
+            option3Answer = Math.floor(Math.random() * (evaluation - 2));
             break;
         case 2:
             option3Answer = evaluation;
-            option1Answer = Math.floor(Math.random() * evaluation - 1);
-            option2Answer = Math.floor(Math.random() * evaluation - 2);
+            option1Answer = Math.floor(Math.random() * (evaluation - 1));
+            option2Answer = Math.floor(Math.random() * (evaluation - 2));
             break;
         default:
             alert('Could not identify random index');
