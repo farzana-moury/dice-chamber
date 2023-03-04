@@ -112,36 +112,47 @@ function levelTwo() {
         case 0:
             option1Answer = evaluation;
             if(evaluation < 0){
-                option2Answer = Math.floor(Math.random() * (evaluation + 1));
-                option3Answer = Math.floor(Math.random() * (option2Answer + 2)) + (option2Answer + 1);
+                option2Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
+                option3Answer = Math.floor(Math.random() * 10) + (option2Answer + 1);
             }
-            else if (evaluation >= 0){
-                option2Answer = Math.floor(Math.random() * (evaluation - 1));
-                option3Answer = Math.floor(Math.random() * (option2Answer - 2)) + (option1Answer - 1);
+            else if (evaluation > 0){
+                option2Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
+                option3Answer = Math.floor(Math.random() * 10) + option2Answer + 1;
+            } else {
+                option2Answer = Math.floor(Math.random() * 10) + 1;
+                option3Answer = Math.floor(Math.random() * 10) + option2Answer + 1;
             }
 
             break;
         case 1:
             option2Answer = evaluation;
             if(evaluation < 0){
-                option1Answer = Math.floor(Math.random() * (evaluation + 1));
-                option3Answer = Math.floor(Math.random() * (option1Answer + 2)) + (option1Answer + 1);
+                option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
+                option3Answer = Math.floor(Math.random() * 10) + (option1Answer + 1);
             }
-            else if (evaluation >= 0){
-                option1Answer = Math.floor(Math.random() * (evaluation - 1));
-                option3Answer = Math.floor(Math.random() * (option1Answer - 2)) + (option1Answer - 1);
+            else if (evaluation > 0){
+                option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
+                option3Answer = Math.floor(Math.random() * 10) + option1Answer + 1;
+            } else {
+                option1Answer = Math.floor(Math.random() * 10) + 1;
+                option3Answer = Math.floor(Math.random() * 10) + option1Answer + 1;
             }
+
             break;
         case 2:
             option3Answer = evaluation;
             if(evaluation < 0){
-                option1Answer = Math.floor(Math.random() * (evaluation + 1));
-                option2Answer = Math.floor(Math.random() * (option1Answer + 2)) + (option1Answer + 1);
+                option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
+                option2Answer = Math.floor(Math.random() * 10) + (option1Answer + 1);
             }
-            else if (evaluation >= 0){
-                option1Answer = Math.floor(Math.random() * (evaluation - 1));
-                option2Answer = Math.floor(Math.random() * (option1Answer - 2)) + (option1Answer - 1);
+            else if (evaluation > 0){
+                option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
+                option2Answer = Math.floor(Math.random() * 10) + option1Answer + 1;
+            } else {
+                option1Answer = Math.floor(Math.random() * 10) + 1;
+                option2Answer = Math.floor(Math.random() * 10) + option1Answer + 1;
             }
+
             break;
         default:
             alert('Could not identify random index');
@@ -152,7 +163,6 @@ function levelTwo() {
     option1.innerText = option1Answer;
     option2.innerText = option2Answer;
     option3.innerText = option3Answer;
-
 }
 
 levelTwo();
