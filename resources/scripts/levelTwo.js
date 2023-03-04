@@ -1,5 +1,5 @@
 // important variables 
-let numberOfOperands, number1, number2, evaluation = 0;
+let numberOfOperands = 2, number1, number2, evaluation = 0;
 let allOperators = ['+', '-', '×', '÷'], randomIndex;
 let expressionArray = [];
 let operands = [], operators = [], bedmas = [];
@@ -8,14 +8,13 @@ let winRound = 1, winLevel;
 
 // html elements
 let gameScreen = document.getElementById('game-screen');
+let optionsPanel = document.getElementById('answer-choices');
 
 const questionMark = document.createElement("h1");
 questionMark.id = "question-mark";
 questionMark.innerText = "?";
 
 function levelTwo() {
-    numberOfOperands = 5;
-
     // creating a random expression
     for (let i = 0; i < numberOfOperands; i++) {
         let randomNum = Math.floor(Math.random() * 6) + 1;
@@ -60,7 +59,6 @@ function levelTwo() {
 
     //we set the evaluation to the first operand since this is our starting point in the calculation
     evaluation = operands[0];
-    console.log(operands[0]);
 
     // calculating with BEDMAS to determine the final evaluation
     for (let i = 0; i < bedmas.length; i++) {
@@ -79,11 +77,11 @@ function levelTwo() {
         evaluation = Math.round(evaluation);
     }
 
-    console.log(expressionArray);
-    console.log(operators);
-    console.log(operands);
-    console.log(bedmas);
-    console.log(evaluation);
+    // console.log(expressionArray);
+    // console.log(operators);
+    // console.log(operands);
+    // console.log(bedmas);
+    // console.log(evaluation);
 
 
     // configuring the HTML elements
@@ -111,6 +109,7 @@ function levelTwo() {
     switch(randomIndex){
         case 0:
             option1Answer = evaluation;
+            option1.id = 'correct';
             if(evaluation < 0){
                 option2Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option3Answer = Math.floor(Math.random() * 10) + (option2Answer + 1);
@@ -126,6 +125,7 @@ function levelTwo() {
             break;
         case 1:
             option2Answer = evaluation;
+            option2.id = 'correct';
             if(evaluation < 0){
                 option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option3Answer = Math.floor(Math.random() * 10) + (option1Answer + 1);
@@ -141,6 +141,7 @@ function levelTwo() {
             break;
         case 2:
             option3Answer = evaluation;
+            option3.id = 'correct';
             if(evaluation < 0){
                 option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option2Answer = Math.floor(Math.random() * 10) + (option1Answer + 1);
@@ -158,11 +159,34 @@ function levelTwo() {
             alert('Could not identify random index');
     }
 
-    console.log(option1Answer, option2Answer, option3Answer);
+    // console.log(option1Answer, option2Answer, option3Answer);
 
     option1.innerText = option1Answer;
     option2.innerText = option2Answer;
     option3.innerText = option3Answer;
+
+    // moving on to the next level
+    if(winRound === 7){
+        winLevel = true;
+    }
+    if(winLevel === true){
+        optionsPanel.innerHTML = '';
+        gameScreen.innerHTML = '';
+        window.location.href = "../levels/levelThree.html";
+    }
+
+    // if the user clicks on the correct answer, the game progresses to the next round
+    document.querySelector("#correct").addEventListener('click', () => {
+        gameScreen.innerHTML = '';
+        option1.id = 'option1';
+        option2.id = 'option2';
+        option3.id = 'option3';
+        winRound++;
+        numberOfOperands++;
+        expressionArray = [], operators = [], operands = [], bedmas = [];
+        levelTwo();
+    });
+
 }
 
 levelTwo();
