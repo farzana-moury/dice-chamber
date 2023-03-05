@@ -1,9 +1,10 @@
 // important variables
-let memoryDice = [];
+let memoryDice = [], selectedDice = [];
 
 // html elements
 let gameScreen = document.getElementById('game-screen');
 let dicePanel = document.getElementById('select-dice');
+dicePanel.style.visibility = 'hidden';
 
 function levelThree() {
 
@@ -23,8 +24,19 @@ function levelThree() {
         gameScreen.appendChild(dice);
         memoryDice.push(randomNum);
     }
+    
+    setTimeout(generateMemoryDice, 3000);
 
     console.log(memoryDice);
+}
+
+function generateMemoryDice(){
+    gameScreen.style.visibility = 'hidden';
+    setTimeout(displayDicePanel, 1000);    
+}
+
+function displayDicePanel(){
+    dicePanel.style.visibility = 'visible';
 }
 
 levelThree();
