@@ -11,6 +11,7 @@ function levelThree() {
     // populate the select dice panel
     for (let i=1; i<=6; i++){
         let dice = document.createElement('img');
+        dice.className = 'selected-dice';
         dice.src = `../images/dice-${i}.png`;
         dice.id = "" + i;
         dicePanel.appendChild(dice);
@@ -28,6 +29,13 @@ function levelThree() {
     setTimeout(generateMemoryDice, 3000);
 
     console.log(memoryDice);
+
+    dicePanel.querySelectorAll('.selected-dice').forEach(dice => {
+        dice.addEventListener('click', () => {
+            selectedDice.push(Number(dice.id));
+            console.log(selectedDice);
+        });
+    })
 }
 
 function generateMemoryDice(){
