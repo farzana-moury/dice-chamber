@@ -5,12 +5,12 @@ let winRound = 1, winLevel;
 // html elements
 let gameScreen = document.getElementById('game-screen');
 
-function levelFour(){
+function levelFour() {
     let correctGuess = Math.floor(Math.random() * 6) + 1; // generate a random roll number - this is the actual guess
     let placeholder = Math.floor(Math.random() * 6) + 1; // generate placeholder number for dice clicker
 
     // make sure the placeholder number is not the same as the actual guess number
-    while(correctGuess === placeholder){
+    while (correctGuess === placeholder) {
         placeholder = Math.floor(Math.random() * 6) + 1;
     }
 
@@ -32,6 +32,19 @@ function levelFour(){
             guess = Math.floor(Math.random() * 6) + 1;
             console.log(guess);
             dice.src = `../images/dice-${guess}.png`;
+            if (guess === correctGuess) {
+                guessLabel.innerHTML = 'CORRECT';
+                guessLabel.style.color = 'green';
+                setTimeout(() => {
+                    winRound++;
+                    gameScreen.innerHTML = '';
+                    guessLabel.innerText = '?';
+                    levelFour();
+                }, 3000);
+            } else {
+                guessLabel.innerHTML = 'Bad roll.';
+            }
+            console.log('rounds: ' + winRound);
         });
     })
 }
