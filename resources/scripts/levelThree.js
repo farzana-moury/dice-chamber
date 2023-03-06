@@ -55,25 +55,22 @@ function levelThree() {
 
 // set timer for memory dice to display
 function generateMemoryDice(){
-    if(gameScreen.style.visibility === 'hidden'){
-        setTimeout(() => {
-            gameScreen.style.visibility = 'visible';
-        }, 3000);
-    } else {
-        setTimeout(() => {
-            gameScreen.style.visibility = 'hidden';
-        }, 3000);
-    }  
+    setTimeout(() => {
+        gameScreen.style.visibility = 'hidden';
+    }, 3000);
+
+    gameScreen.style.visibility = 'visible';
+
     displayDicePanel();  
 }
 
-// the dice panel is revealed, where the user tries to remember the memory dice
+// set timer for dice panel to display
 function displayDicePanel(){
-    if(dicePanel.style.visibility === 'hidden'){
-        setTimeout(() => {
-            dicePanel.style.visibility = 'visible';
-        }, 3000);
-    } 
+    setTimeout(() => {
+        dicePanel.style.visibility = 'visible';
+    }, 3000);
+
+    dicePanel.style.visibility = 'hidden';
 }
 
 levelThree();
