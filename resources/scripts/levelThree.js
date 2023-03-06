@@ -1,6 +1,7 @@
 // important variables
 let memoryDice = [], selectedDice = [];
 let winRound = 1, winLevel;
+let memoryDiceNum = 3;
 
 // html elements
 let gameScreen = document.getElementById('game-screen');
@@ -19,7 +20,7 @@ function levelThree() {
     }
 
     // generate three random dice and display to user
-    for (let i=0; i<3; i++){
+    for (let i=0; i<memoryDiceNum; i++){
         let randomNum = Math.floor(Math.random() * 6) + 1;
         let dice = document.createElement('img');
         dice.src = `../images/dice-${randomNum}.png`;
@@ -37,8 +38,9 @@ function levelThree() {
             selectedDice.push(Number(dice.id));
             console.log(selectedDice);
 
-            if(selectedDice[0] === memoryDice[0] && selectedDice[1] === memoryDice[1] && selectedDice[2] === memoryDice[2]){
+            if(areArraysEqual(selectedDice, memoryDice) === true){
                 winRound++;
+                memoryDiceNum++;
                 memoryDice = [];
                 selectedDice = [];
                 gameScreen.innerHTML = '';
@@ -71,6 +73,11 @@ function displayDicePanel(){
     }, 3000);
 
     dicePanel.style.visibility = 'hidden';
+}
+
+// check for array equality
+function areArraysEqual(arrayA, arrayB){
+    return arrayA.length === arrayB.length && arrayA.every((value, index) => value === arrayB[index]);
 }
 
 levelThree();
