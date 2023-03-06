@@ -1,7 +1,7 @@
 // important variables
 let memoryDice = [], selectedDice = [];
 let winRound = 1, winLevel;
-let memoryDiceNum = 3;
+let memoryDiceNum = 1, timer = 3000;
 
 // html elements
 let gameScreen = document.getElementById('game-screen');
@@ -38,8 +38,10 @@ function levelThree() {
             selectedDice.push(Number(dice.id));
             console.log(selectedDice);
 
+            // if the user gets the correct order of dice, we progress to the next round (adding complexity)
             if(areArraysEqual(selectedDice, memoryDice) === true){
                 winRound++;
+                timer -= 500;
                 memoryDiceNum++;
                 memoryDice = [];
                 selectedDice = [];
@@ -59,7 +61,7 @@ function levelThree() {
 function generateMemoryDice(){
     setTimeout(() => {
         gameScreen.style.visibility = 'hidden';
-    }, 3000);
+    }, timer);
 
     gameScreen.style.visibility = 'visible';
 
@@ -70,7 +72,7 @@ function generateMemoryDice(){
 function displayDicePanel(){
     setTimeout(() => {
         dicePanel.style.visibility = 'visible';
-    }, 3000);
+    }, timer);
 
     dicePanel.style.visibility = 'hidden';
 }
