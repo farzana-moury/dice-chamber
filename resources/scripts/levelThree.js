@@ -9,6 +9,15 @@ let dicePanel = document.getElementById('select-dice');
 dicePanel.style.visibility = 'hidden';
 
 function levelThree() {
+    // moving on to the next level
+    if(winRound === 6){
+        winLevel = true;
+    }
+    if(winLevel === true){
+        dicePanel.innerHTML = '';
+        gameScreen.innerHTML = '';
+        window.location.href = "../levels/levelFour.html";
+    }
 
     // populate the select dice panel
     for (let i=1; i<=6; i++){
@@ -30,13 +39,13 @@ function levelThree() {
     
     generateMemoryDice();
 
-    console.log(memoryDice);
+    // console.log(memoryDice);
 
     // we need to determine which dice from the dice panel the user clicked on
     dicePanel.querySelectorAll('.selected-dice').forEach(dice => {
         dice.addEventListener('click', () => {
             selectedDice.push(Number(dice.id));
-            console.log(selectedDice);
+            // console.log(selectedDice);
 
             // if the user gets the correct order of dice, we progress to the next round (adding complexity)
             if(areArraysEqual(selectedDice, memoryDice) === true){
@@ -51,7 +60,7 @@ function levelThree() {
         
                 console.log(winRound);
             } else {
-                console.log('not working');
+                console.log('wrong!');
             }
         });
     })
