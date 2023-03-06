@@ -1,0 +1,22 @@
+html {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: red;
+}
+
+body {
+    background-color: black;
+}
+
+#game-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25vh 25vh;
+}
+
+h2 {
+    color: white;
+    font-size: 5vh;
+}
