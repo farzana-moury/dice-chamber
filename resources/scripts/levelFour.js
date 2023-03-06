@@ -22,9 +22,18 @@ function levelFour(){
     // adding the dice where the user will repeatedly click (i.e. roll)
     let dice = document.createElement('img');
     dice.src = `../images/dice-${placeholder}.png`;
+    dice.id = 'click-dice';
     gameScreen.appendChild(dice);
 
     console.log(correctGuess, placeholder);
+
+    document.querySelectorAll('#click-dice').forEach(dice => {
+        dice.addEventListener('click', () => {
+            guess = Math.floor(Math.random() * 6) + 1;
+            console.log(guess);
+            dice.src = `../images/dice-${guess}.png`;
+        });
+    })
 }
 
 levelFour();
