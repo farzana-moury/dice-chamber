@@ -100,11 +100,12 @@ function levelTwo() {
     }
     gameScreen.append(questionMark);
 
-    let option1 = document.getElementById("option1");
-    let option2 = document.getElementById("option2");
-    let option3 = document.getElementById("option3");
+    let option1 = document.getElementById("option");
+    let option2 = document.getElementById("option");
+    let option3 = document.getElementById("option");
 
-    randomIndex =  Math.floor(Math.random() * 2);
+    randomIndex =  Math.floor(Math.random() * 3);
+    console.log(randomIndex);
 
     switch(randomIndex){
         case 0:
@@ -176,16 +177,28 @@ function levelTwo() {
     }
 
     // if the user clicks on the correct answer, the game progresses to the next round
-    document.querySelector("#correct").addEventListener('click', () => {
+    document.querySelector('#correct').addEventListener('click', () => {
         gameScreen.innerHTML = '';
-        option1.id = 'option1';
-        option2.id = 'option2';
-        option3.id = 'option3';
+        option1.id = 'option';
+        option2.id = 'option';
+        option3.id = 'option';
         winRound++;
         numberOfOperands++;
         expressionArray = [], operators = [], operands = [], bedmas = [];
         levelTwo();
     });
+
+    // if the user clicks on the wrong answer, the game retries the same round
+    document.querySelectorAll('#option').addEventListener(option => {
+        option.addEventListener('click', () => {
+            gameScreen.innerHTML = '';
+            option1.id = 'option';
+            option2.id = 'option';
+            option3.id = 'option';
+            expressionArray = [], operators = [], operands = [], bedmas = [];
+            levelTwo();
+        });
+    })
 
 }
 
