@@ -160,7 +160,7 @@ function levelTwo() {
             alert('Could not identify random index');
     }
 
-    // console.log(option1Answer, option2Answer, option3Answer);
+    console.log(option1Answer, option2Answer, option3Answer);
 
     option1.innerText = option1Answer;
     option2.innerText = option2Answer;
@@ -189,7 +189,7 @@ function levelTwo() {
     });
 
     // if the user clicks on the wrong answer, the game retries the same round
-    document.querySelectorAll('#option').addEventListener(option => {
+    document.querySelectorAll('#option').forEach(option => {
         option.addEventListener('click', () => {
             gameScreen.innerHTML = '';
             option1.id = 'option';
