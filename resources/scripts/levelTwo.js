@@ -100,22 +100,26 @@ function levelTwo() {
     }
     gameScreen.append(questionMark);
 
-    let option1 = document.getElementById("option");
-    let option2 = document.getElementById("option");
-    let option3 = document.getElementById("option");
+    let option1 = document.getElementById("option1");
+    let option2 = document.getElementById("option2");
+    let option3 = document.getElementById("option3");
 
-    randomIndex =  Math.floor(Math.random() * 3);
+    randomIndex = Math.floor(Math.random() * 3);
     console.log(randomIndex);
 
-    switch(randomIndex){
+    switch (randomIndex) {
         case 0:
             option1Answer = evaluation;
-            option1.id = 'correct';
-            if(evaluation < 0){
+
+            option1.className = 'correct';
+            option2.className = 'option';
+            option3.className = 'option';
+
+            if (evaluation < 0) {
                 option2Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option3Answer = Math.floor(Math.random() * 10) + (option2Answer + 1);
             }
-            else if (evaluation > 0){
+            else if (evaluation > 0) {
                 option2Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option3Answer = Math.floor(Math.random() * 10) + option2Answer + 1;
             } else {
@@ -126,12 +130,16 @@ function levelTwo() {
             break;
         case 1:
             option2Answer = evaluation;
-            option2.id = 'correct';
-            if(evaluation < 0){
+
+            option2.className = 'correct';
+            option1.className = 'option';
+            option3.className = 'option';
+
+            if (evaluation < 0) {
                 option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option3Answer = Math.floor(Math.random() * 10) + (option1Answer + 1);
             }
-            else if (evaluation > 0){
+            else if (evaluation > 0) {
                 option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option3Answer = Math.floor(Math.random() * 10) + option1Answer + 1;
             } else {
@@ -142,12 +150,16 @@ function levelTwo() {
             break;
         case 2:
             option3Answer = evaluation;
-            option3.id = 'correct';
-            if(evaluation < 0){
+
+            option3.className = 'correct';
+            option1.className = 'option';
+            option2.className = 'option';
+
+            if (evaluation < 0) {
                 option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option2Answer = Math.floor(Math.random() * 10) + (option1Answer + 1);
             }
-            else if (evaluation > 0){
+            else if (evaluation > 0) {
                 option1Answer = Math.floor(Math.random() * 10) + (evaluation + 1);
                 option2Answer = Math.floor(Math.random() * 10) + option1Answer + 1;
             } else {
@@ -167,21 +179,21 @@ function levelTwo() {
     option3.innerText = option3Answer;
 
     // moving on to the next level
-    if(winRound === 7){
+    if (winRound === 7) {
         winLevel = true;
     }
-    if(winLevel === true){
+    if (winLevel === true) {
         optionsPanel.innerHTML = '';
         gameScreen.innerHTML = '';
         window.location.href = "../levels/levelThree.html";
     }
 
     // if the user clicks on the correct answer, the game progresses to the next round
-    document.querySelector('#correct').addEventListener('click', () => {
+    document.querySelector('.correct').addEventListener('click', () => {
         gameScreen.innerHTML = '';
-        option1.id = 'option';
-        option2.id = 'option';
-        option3.id = 'option';
+        option1.className = 'option';
+        option2.className = 'option';
+        option3.className = 'option';
         winRound++;
         numberOfOperands++;
         expressionArray = [], operators = [], operands = [], bedmas = [];
@@ -189,14 +201,9 @@ function levelTwo() {
     });
 
     // if the user clicks on the wrong answer, the game retries the same round
-    document.querySelectorAll('#option').forEach(option => {
+    document.querySelectorAll('.option').forEach(option => {
         option.addEventListener('click', () => {
-            gameScreen.innerHTML = '';
-            option1.id = 'option';
-            option2.id = 'option';
-            option3.id = 'option';
-            expressionArray = [], operators = [], operands = [], bedmas = [];
-            levelTwo();
+            console.log('wrong!');
         });
     })
 
